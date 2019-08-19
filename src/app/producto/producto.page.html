@@ -1,0 +1,30 @@
+<ion-header >
+  <ion-toolbar color="success" class="titulo_left">
+		<ion-buttons slot="start">
+				<ion-back-button defaultHref="/" text=""></ion-back-button>
+		</ion-buttons>
+    <ion-title >{{item.producto}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-card>
+			<img src="../assets/imgs/productos/{{item.proveedor}}.jpg">
+	  <ion-card-header>
+	    <ion-card-subtitle class="titulo_body">{{item.linea  | uppercase}}</ion-card-subtitle>
+	    <ion-card-title class="titulo_body">{{item.producto}}</ion-card-title>
+	  </ion-card-header>
+
+	  <ion-card-content class="parrafo_body" >
+			<p *ngFor="let desc of item.descripcion.split('-')">{{desc}}</p>
+		</ion-card-content>
+
+		<ion-button expand="block" icon-left color="success" (click)="_cs.agregar_carrito(item)" 
+			class="parrafo">
+			<ion-icon name="cart" color="light"></ion-icon> 
+			<p class="blanco">  +{{item.precio_compra | currency:'CLP':'symbol-narrow'}}</p>
+	  </ion-button>
+
+	</ion-card>
+
+</ion-content>

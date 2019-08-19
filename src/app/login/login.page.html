@@ -1,0 +1,31 @@
+<ion-content padding>
+
+  <ion-card class="ion-margin-bottom">
+    <img src="../assets/icon/logo_nogal.png" class="ion-margin-bottom">
+
+  </ion-card>
+
+  <ion-list class="parrafo_body ion-margin-top">
+
+    <ion-item>
+      <ion-label fixed>correo</ion-label>
+      <ion-input type="text" [(ngModel)]="correo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>psw</ion-label>
+      <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+
+  <ion-button (click)="ingresar()" [disabled]=" correo.length < 5 || contrasena.length < 5" color="success"
+    expand="full" class="ion-margin-top">
+    <p class="blanco parrafo_body">Ingresar</p>
+  </ion-button>
+  <ion-button (click)="crearCuenta()" color="primary" expand="full" class="ion-margin-bottom parrafo_body">
+    Crear cuenta
+  </ion-button>
+
+</ion-content>

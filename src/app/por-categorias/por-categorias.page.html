@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="success" text-left class="blanco">
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo" text-left>Categoría: {{categoria.linea}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="parrafo_body">
+  <ion-item *ngFor="let item of _ps.porCategoria" (click)="ver_producto(item);">
+    <ion-thumbnail slot="start">
+      <img src="../assets/imgs/productos/{{item.proveedor}}.jpg">
+    </ion-thumbnail>
+    <ion-label>
+      <h2>{{item.producto}}</h2>
+      <p>{{item.precio_compra | currency:'CLP':'symbol-narrow'}}</p>
+    </ion-label>
+  </ion-item>
+</ion-content>

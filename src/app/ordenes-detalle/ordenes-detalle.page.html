@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar class="titulo" color="success">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title text-left>Pedido {{ this.orden.id }} - {{formatear_fecha(this.orden.creado_en)}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center class="parrafo_body" margin-bottom>
+  <ion-item *ngFor="let item of this._cs.detalle_orden">
+    <ion-thumbnail slot="start">
+      <img [src]="item.codigo | imagen" />
+    </ion-thumbnail>
+    <ion-label>
+      <h2>{{ item.producto }}</h2>
+      <p>{{ item.precio_compra | currency: "CLP" }}</p>
+    </ion-label>
+  </ion-item >
+
+  <ion-button (click)="this.repetir_pedido(orden)" color="warning" expand="full">
+    Repetir Pedido
+  </ion-button>
+</ion-content>

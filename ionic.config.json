@@ -1,0 +1,7 @@
+{
+  "name": "carritoBase",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

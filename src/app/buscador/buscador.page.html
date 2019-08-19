@@ -1,0 +1,21 @@
+<ion-content >
+  <!-- Searchbar with a cancel button and custom cancel button text -->
+  <ion-searchbar class="blanco_busq"
+    (ionInput)="buscar_producto($event)"
+    showCancelButton color="success"
+    cancelButtonText="Custom Cancel"
+    placeholder="Ingrese producto..." animated></ion-searchbar>
+
+    <ion-list class="parrafo_body">
+      <ion-item *ngFor="let item of _ps.resultados" (click)="ver_producto(item);">
+        <ion-thumbnail slot="start">
+          <img [src]=" item.codigo | imagen">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{item.producto}}</h2>
+          <p>{{item.precio_compra | currency:'USD':symbol}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    
+</ion-content>

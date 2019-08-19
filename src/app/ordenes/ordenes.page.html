@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar class="titulo" color="success">
+    <ion-title>Pedidos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="parrafo_body">
+  <div text-center class="carrito_vacio" *ngIf="_cs.ordenes.length === 0">
+    <ion-icon name="cart" class="icon_5x dorado"></ion-icon>
+    <br />
+    No ha realizado pedidos.
+  </div>
+
+  <ion-list *ngIf="_cs.ordenes.length > 0">
+
+    <ion-item-sliding #item *ngFor="let ord of _cs.ordenes" (click)="ver_detalle_orden(ord)">
+      <ion-item >
+
+        <ion-thumbnail slot="start">
+          <img src="../assets/imgs/pedidos.png" *ngIf="ord.detalle.length < 3">
+          <img src="../assets/imgs/pedidos_full.png" *ngIf="ord.detalle.length > 3">
+        </ion-thumbnail>
+
+        <ion-label>
+          <h2>{{formatear_fecha(ord.creado_en)}}</h2>
+          <p>{{ord.detalle.length}} items - Id Orden {{ ord.id }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+          <ion-button (click)="borrar_pedido(ord)" 
+            color="danger">
+            <ion-icon name="trash" ></ion-icon>
+          </ion-button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
+  </ion-list>
+
+
+
+</ion-content>

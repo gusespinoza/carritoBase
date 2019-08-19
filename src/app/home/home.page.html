@@ -1,0 +1,69 @@
+<ion-header>
+	<ion-toolbar color="success" class="titulo">
+			&nbsp;
+			&nbsp;
+			&nbsp;
+			&nbsp;
+		<ion-title slot="start">
+			Nogal - Salud y Diseño
+		</ion-title>
+
+		<ion-buttons slot="end">
+			<ion-button icon-only (click)="ver_carrito()">
+				<ion-icon name="cart" class="icono_grande"></ion-icon>
+				<ion-badge color="danger" class="carrito_numero" *ngIf="_cs.items.length > 0">
+					{{_cs.items.length}}
+				</ion-badge>
+			</ion-button>
+			<ion-button icon-only (click)="cerrar_sesion()">
+				<ion-icon name="log-out" class="icono_grande"></ion-icon>
+			</ion-button>
+			&nbsp;
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+	<ion-searchbar class="blanco_busq" (ionInput)="buscar_producto($event)" 
+			showCancelButton color="light"
+			cancelButtonText="Custom Cancel" placeholder="frutos, cereales, etc..." 
+	animated></ion-searchbar>
+
+	<div *ngIf="_ps.resultados.length === 0">
+		<ion-grid>
+			<ion-row *ngFor="let pares of _ps.productos">
+				<ion-col *ngFor="let item of pares" (click)="ver_producto(item)">
+
+					<ion-card>
+						<img src="../assets/imgs/productos/{{item.proveedor}}.jpg">
+						<ion-card-header>
+							<ion-card-subtitle class="parrafo">{{item.producto}}</ion-card-subtitle>
+							<ion-card-title class="parrafo">{{item.precio_compra | currency:'CLP':'symbol-narrow'}}</ion-card-title>
+						</ion-card-header>
+					</ion-card>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<ion-infinite-scroll threshold="100px" (ionInfinite)="siguiente_pagina($event)">
+			<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando...">
+			</ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+	</div>
+
+	<div *ngIf="_ps.resultados.length > 0">
+
+		<ion-list class="parrafo_body">
+			<ion-item *ngFor="let item of _ps.resultados" (click)="ver_producto(item);">
+				<ion-thumbnail slot="start">
+						<img src="../assets/imgs/productos/{{item.proveedor}}.jpg">
+				</ion-thumbnail>
+				<ion-label>
+					<h2>{{item.producto}} - ({{item.linea}})</h2>
+					<p>{{item.precio_compra | currency:'CLP':'symbol-narrow'}}</p>
+				</ion-label>
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-content>

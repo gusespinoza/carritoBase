@@ -1,0 +1,63 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+
+.parrafo {
+    font-family: 'Open Sans', sans-serif !important;
+    text-align: center;
+}
+
+.parrafo_body {
+    font-family: 'Open Sans', sans-serif !important;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.titulo {
+    font-family: 'Bree Serif', serif !important;
+    text-align: center;
+    color: white;
+}
+
+.titulo_left {
+    font-family: 'Bree Serif', serif !important;
+    text-align: left;
+    color: white;
+}
+
+.titulo_body {
+    font-family: 'Bree Serif', serif !important;
+    text-align: left;
+    color: black;
+}
+
+
+
+.verde-nogal {
+    background-color:#77CC6D;
+}
+
+.blanco {
+    color: white;
+}
+
+.dorado {
+    color: #ff9900;
+}
+
+
+
+
+
+
+
+
